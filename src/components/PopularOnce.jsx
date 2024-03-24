@@ -75,7 +75,7 @@ const PopularOnce = ({ data }) => {
                     fontSize: "14px",
                   }}
                 >
-                  <BiSolidOffer /> 4 Offer Trending
+                  <BiSolidOffer /> 4 Offers Trending
                 </Box>
                 <Box
                   style={{

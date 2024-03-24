@@ -47,7 +47,7 @@ export const Signin = (userData) => async (dispatch) => {
       `https://staging.fastor.in/v1/pwa/user/login`,
       userData
     );
-    localStorage.setItem("token", JSON.stringify(res?.data?.data.token));
+    localStorage.setItem("token", JSON.stringify(res?.data?.data?.token));
     dispatch(Signin_Success(res?.data));
     return Promise.resolve(res?.data);
   } catch (error) {

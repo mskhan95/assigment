@@ -16,13 +16,14 @@ import {
 } from "@chakra-ui/react";
 
 const OTP = ({ login, setLogin, number }) => {
-  const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  async function HandleSubmitPassword(password, number) {
-    if (password.length === 6 && password === "123456") {
-      dispatch(Signin({ phone: number, otp: password, dial_code: "+91" }))
+  async function HandleSubmitPassword(otp, number) {
+    otp = otp.join("");
+    if (otp.length === 6 && otp === "123456") {
+      dispatch(Signin({ phone: number, otp: otp, dial_code: "+91" }))
         .then((res) => {
           if (res?.status === "Success") {
             navigate("/products");
@@ -35,9 +36,9 @@ const OTP = ({ login, setLogin, number }) => {
           console.log(err, "Errrrrrrrrrr");
           alert("Something went wrong");
         });
-    } else if (password.length === 6 && password !== "123456") {
+    } else if (otp.length === 6 && otp !== "123456") {
       alert("Enter Correct OTP");
-    } else if (password.length < 6) {
+    } else if (otp.length < 6) {
       alert("Enter 6 Digit OTP");
     } else {
       alert("Somthing went wrong");
@@ -48,7 +49,7 @@ const OTP = ({ login, setLogin, number }) => {
     if (!login) {
       dispatch(SignUp({ phone: number, dial_code: "+91" })).then((res) => {
         if (res?.status === "Success") {
-          setPassword("");
+          setOtp(["", "", "", "", "", ""]);
           setLogin(false);
           alert("Otp has been sent", "success");
         }
@@ -57,27 +58,21 @@ const OTP = ({ login, setLogin, number }) => {
   }
 
   const handleInputChange = (index, value) => {
-    const newPassword = [...password];
-    newPassword[index] = value;
-    setPassword(newPassword.join(""));
+    if (!Number(value)) {
+      return;
+    }
+    const newotp = [...otp];
+    newotp[index] = value;
+    setOtp(newotp);
   };
 
   const handleKeyDown = (index, event) => {
     if (event.key === "Backspace" || event.key === "Delete") {
-      const newPassword = [...password];
-      newPassword[index] = "";
-      setPassword(newPassword.join(""));
+      const newotp = [...otp];
+      newotp[index] = "";
+      setOtp(newotp);
     }
   };
-
-  const token = JSON.parse(localStorage.getItem("token"));
-
-  useEffect(() => {
-    if (token) {
-      navigate("/products");
-    }
-    navigate("/");
-  }, [token]);
 
   return (
     <div>
@@ -121,6 +116,7 @@ const OTP = ({ login, setLogin, number }) => {
                 <PinInputField
                   key={index}
                   type="number"
+                  value={otp[index]}
                   bgColor={"#F7F8F9"}
                   h={14}
                   w={12}
@@ -141,7 +137,7 @@ const OTP = ({ login, setLogin, number }) => {
         color={"white"}
         bgColor={"#FF6D6A"}
         margin={"10px 0px"}
-        onClick={() => HandleSubmitPassword(password, number)}
+        onClick={() => HandleSubmitPassword(otp, number)}
       >
         Verify
       </Button>
