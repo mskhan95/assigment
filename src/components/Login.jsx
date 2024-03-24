@@ -36,9 +36,12 @@ const Login = () => {
   }
 
   function HandleInputNumber(e) {
-    let inputValue = e.target.value.replace(/\D/g, "");
-    inputValue = inputValue.slice(0, 10);
-    setNumber(inputValue);
+    let num = "" + e.target.value;
+    if (num.length <= 10) {
+      let inputValue = e.target.value.replace(/\D/g, "");
+      inputValue = inputValue.slice(0, 10);
+      setNumber(inputValue);
+    }
   }
 
   return (
@@ -68,6 +71,7 @@ const Login = () => {
                   }}
                   max={9999999999}
                   type="number"
+                  value={number}
                   height={"56px"}
                   bgColor={"#F7F8F9"}
                   placeholder="Enter Your Mobile Number"
