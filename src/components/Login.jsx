@@ -61,7 +61,7 @@ const Login = () => {
               Enter Your Mobile Number
             </Heading>
             <Text fontSize={"16px"} color={"#8391A1"} padding={"10px 0px"}>
-              We will send you the 4 digit verification code
+              We will send you the 6 digit verification code
             </Text>
             <Box>
               <FormControl>
