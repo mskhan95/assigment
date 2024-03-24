@@ -49,12 +49,21 @@ const PopularOnce = ({ data }) => {
               </Box>
               <Box style={{ width: "180px" }}>
                 <Text fontWeight={"semibold"}>{ele?.restaurant_name}</Text>
-                <Box style={{ fontSize: "12px", color: "#8391A1" }}>
-                  {ele.cuisines.map((ele, i) => {
+                <Box
+                  style={{
+                    fontSize: "12px",
+                    color: "#8391A1",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    columnGap: "1ch",
+                  }}
+                >
+                  {ele.cuisines.map((e, i) => {
                     return (
-                      <Box key={i} display={"flex"}>
-                        <Text>{ele?.cuisine_name}</Text>
-                      </Box>
+                      <Text key={i}>
+                        {e?.cuisine_name}
+                        {i < ele?.cuisines?.length - 1 ? ", " : ""}
+                      </Text>
                     );
                   })}
                 </Box>
