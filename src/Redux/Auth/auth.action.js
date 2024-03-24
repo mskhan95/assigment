@@ -36,6 +36,7 @@ export const SignUp = (userData) => async (dispatch) => {
     return Promise.resolve(res.data);
   } catch (error) {
     dispatch(Signup_Failure());
+    return Promise.reject(error);
   }
 };
 
@@ -51,5 +52,6 @@ export const Signin = (userData) => async (dispatch) => {
     return Promise.resolve(res?.data);
   } catch (error) {
     dispatch(Signin_Failure());
+    return Promise.reject(error);
   }
 };

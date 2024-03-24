@@ -21,19 +21,26 @@ const OTP = ({ login, setLogin, number }) => {
   const navigate = useNavigate();
 
   async function HandleSubmitPassword(password, number) {
-    if (password.length === 6) {
+    if (password.length === 6 && password === "123456") {
       dispatch(Signin({ phone: number, otp: password, dial_code: "+91" }))
         .then((res) => {
           if (res?.status === "Success") {
             navigate("/products");
           }
+          if (res?.status === "Failed") {
+            alert(res);
+          }
         })
         .catch((err) => {
-          alert(err.error_message);
           console.log(err, "Errrrrrrrrrr");
+          alert("Something went wrong");
         });
+    } else if (password.length === 6 && password !== "123456") {
+      alert("Enter Correct OTP");
     } else if (password.length < 6) {
-      alert("Enter Correct Password");
+      alert("Enter 6 Digit OTP");
+    } else {
+      alert("Somthing went wrong");
     }
   }
 
