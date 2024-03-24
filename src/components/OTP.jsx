@@ -45,6 +45,11 @@ const OTP = ({ login, setLogin, number }) => {
     }
   }
 
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (token) {
+    navigate("/products");
+  }
+
   function HandleResend() {
     if (!login) {
       dispatch(SignUp({ phone: number, dial_code: "+91" })).then((res) => {
