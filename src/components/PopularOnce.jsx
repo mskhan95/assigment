@@ -19,9 +19,9 @@ const PopularOnce = ({ data }) => {
       >
         Popular Once
       </Heading>
-      {data?.map((ele, i) => {
+      {data?.map((Product, i) => {
         return (
-          <Link to={`/products/${ele?.restaurant_id}`}>
+          <Link to={`/products/${Product?.restaurant_id}`}>
             <Box
               key={i}
               style={{
@@ -43,12 +43,12 @@ const PopularOnce = ({ data }) => {
                     height: "118px",
                     width: "122px",
                   }}
-                  src={ele.images[0].url}
+                  src={Product.images[0].url}
                   alt="res"
                 />
               </Box>
               <Box style={{ width: "180px" }}>
-                <Text fontWeight={"semibold"}>{ele?.restaurant_name}</Text>
+                <Text fontWeight={"semibold"}>{Product?.restaurant_name}</Text>
                 <Box
                   style={{
                     fontSize: "12px",
@@ -58,15 +58,30 @@ const PopularOnce = ({ data }) => {
                     columnGap: "1ch",
                   }}
                 >
-                  {ele.cuisines.map((e, i) => {
+                  {Product.cuisines.map((e, i) => {
                     return (
                       <Text key={i}>
                         {e?.cuisine_name}
-                        {i < ele?.cuisines?.length - 1 ? ", " : ""}
+                        {i < Product?.cuisines?.length - 1 ? ", " : ""}
                       </Text>
                     );
                   })}
                 </Box>
+
+                <Box
+                  style={{
+                    fontSize: "12px",
+                    color: "#8391A1",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    columnGap: "1ch",
+                  }}
+                >
+                  <Text key={i}>
+                    {`${Product?.location?.city_name} ${Product?.location?.state_name}`}
+                  </Text>
+                </Box>
+
                 <Box
                   style={{
                     display: "flex",
@@ -93,7 +108,7 @@ const PopularOnce = ({ data }) => {
                       }}
                     >
                       <IoStar />
-                      <Box>{ele?.rating?.restaurant_avg_rating}</Box>
+                      <Box>{Product?.rating?.restaurant_avg_rating}</Box>
                     </Box>
                     <Box style={{ fontSize: "12px", color: "#8391A1" }}>
                       Popularity
@@ -108,7 +123,7 @@ const PopularOnce = ({ data }) => {
                       }}
                     >
                       <BsCurrencyDollar />
-                      <Box>{ele?.avg_cost_for_two}</Box>
+                      <Box>{Product?.avg_cost_for_two}</Box>
                     </Box>
                     <Box style={{ fontSize: "12px", color: "#8391A1" }}>
                       Cost for two
