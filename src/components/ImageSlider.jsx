@@ -50,7 +50,12 @@ const ImageSlider = () => {
         customTransition="all .5"
         transitionDuration={2000}
         containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={[
+          "superLargeDesktop",
+          "desktop",
+          "tablet",
+          "mobile",
+        ]}
       >
         {SlideData.map((ele, index) => (
           <Center>
