@@ -27,7 +27,7 @@ const UserDeatils = () => {
         >
           Karan
         </Heading>
-        <Text style={{ fontWeight: "bold" }}>Let's explore this evening'</Text>
+        <Text style={{ fontWeight: "bold" }}>Let's explore this evening</Text>
       </Box>
       <Box
         className="flex w-[50%] gap-5"
