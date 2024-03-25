@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../Redux/Product/product.action";
 import ProductNavBar from "./ProductNavBar";
 import UserDeatils from "./UserDeatils";
+import ImageSlider from "./ImageSlider";
 
 const ProductPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ProductPage = () => {
     <div style={{ width: "375px" }}>
       <ProductNavBar />
       <UserDeatils />
+      <ImageSlider />
       <PopularOnce data={data} />
     </div>
   );
