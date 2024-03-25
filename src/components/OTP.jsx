@@ -33,7 +33,6 @@ const OTP = ({ login, setLogin, number }) => {
           }
         })
         .catch((err) => {
-          console.log(err, "Errrrrrrrrrr");
           alert("Something went wrong");
         });
     } else if (otp.length === 6 && otp !== "123456") {
@@ -96,7 +95,7 @@ const OTP = ({ login, setLogin, number }) => {
         }}
         marginLeft={4}
         marginTop={4}
-        marginBottom={"200px"}
+        marginBottom={"150px"}
       >
         <FaAngleLeft />
       </Box>
